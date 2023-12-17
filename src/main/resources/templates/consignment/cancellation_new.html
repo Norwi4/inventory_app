@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>New Sale</title>
+</head>
+<body>
+<div align="center">
+    <h1>Новый склад</h1>
+    <br />
+    <form action="#" th:action="@{/consignment/save-cancellation}" th:object="${consignment}"
+          method="post">
+
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Артикул:</td>
+                <td>
+                    <select th:field="*{article}">
+                        <option value="0">select operator</option>
+                        <option th:each="products : ${products}" th:value="${products.article}"
+                                th:text="${products.name}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Кол-во:</td>
+                <td><input type="text" th:field="*{quantity}" /></td>
+            </tr>
+            <tr>
+                <td>Дата:</td>
+                <td><input type="text" th:field="*{date}" /></td>
+            </tr>
+            <tr>
+                <td>Поставщик:</td>
+                <td>
+                    <select th:field="*{providerId}">
+                        <option value="0">select operator</option>
+                        <option th:each="providers : ${providers}" th:value="${providers.id}"
+                                th:text="${providers.organizationName}"></option>
+                    </select>
+                </td>
+            </tr>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>

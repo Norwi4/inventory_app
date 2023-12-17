@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Sales Manager Application</title>
+</head>
+<body>
+<div>
+    <a href="/warehouse">Склады</a>
+    <a href="/consignment/in">Приходные накладные</a>
+    <a href="/consignment/out">Списание</a>
+    <a href="/remains">Остатки</a>
+</div>
+<div align="center">
+    <h1>Накладные</h1>
+    <a href="/consignment/new">Enter New Sale</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Номер накладной</th>
+            <th>Артикул</th>
+            <th>Продукт</th>
+            <th>Кол-во</th>
+            <th>Поставщик</th>
+            <th>Ответственный</th>
+            <th>Дата поставки</th>
+            <th>Годен до</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="consignment : ${list}">
+            <td th:text="${consignment.id}">ID</td>
+            <td th:text="${consignment.article}">Item Name</td>
+            <td th:text="${consignment.productName}">Item Name</td>
+            <td th:text="${consignment.quantity}">Item Name</td>
+            <td th:text="${consignment.organizationName}">Item Name</td>
+            <td th:text="${consignment.responsible}">Item Name</td>
+            <td th:text="${consignment.comeInDate}">Item Name</td>
+            <td th:text="${consignment.expirationDate}">Item Name</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

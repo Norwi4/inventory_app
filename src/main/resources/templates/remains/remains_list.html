@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>Sales Manager Application</title>
+</head>
+<body>
+<div>
+  <a href="/warehouse">Склады</a>
+  <a href="/consignment/in">Приходные накладные</a>
+  <a href="/consignment/out">Списание</a>
+  <a href="/remains">Остатки</a>
+</div>
+<div align="center">
+  <h1>Остатки</h1>
+  <br/><br/>
+  <table border="1" cellpadding="10">
+    <thead>
+    <tr>
+      <th>Артикул</th>
+      <th>Продукт</th>
+      <th>Кол-во</th>
+      <th>Склад</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="consignment : ${list}">
+      <td th:text="${consignment.article}">Item Name</td>
+      <td th:text="${consignment.productName}">Item Name</td>
+      <td th:text="${consignment.quantity}">Item Name</td>
+      <td th:text="${consignment.warehouse_name}">Item Name</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
