@@ -5,8 +5,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Репозиторий для работы с блюдами
@@ -16,9 +16,11 @@ import java.util.Optional;
 @Repository
 public class DishRepository {
     private JdbcTemplate jdbcTemplate;
+    private ConsignmentRepository consignmentRepository;
 
-    public DishRepository(JdbcTemplate jdbcTemplate) {
+    public DishRepository(JdbcTemplate jdbcTemplate, ConsignmentRepository consignmentRepository) {
         this.jdbcTemplate = jdbcTemplate;
+        this.consignmentRepository = consignmentRepository;
     }
 
     /**
@@ -85,7 +87,7 @@ public class DishRepository {
      * Списание блюда
      */
     public void consignmentDish(CancellationDish cancellationDish) {
-        List<ProductDTO> productDTO = jdbcTemplate.queryForList("select p.id                 as id,\n" +
+        List<ProductDTO> productDTO = jdbcTemplate.query("select p.id                 as id,\n" +
                 "       dish_product.article as article,\n" +
                 "       p.name               as name,\n" +
                 "       quantity             as quantity,\n" +
@@ -93,9 +95,12 @@ public class DishRepository {
                 "\n" +
                 "from dish_product\n" +
                 "         join inventory_db.product p on dish_product.article = p.article\n" +
-                "where dish_id =", ProductDTO.class, cancellationDish.getDishId());
+                "where dish_id =?", BeanPropertyRowMapper.newInstance(ProductDTO.class), cancellationDish.getDishId());
 
-
+        for (ProductDTO dto : productDTO){
+            var count = dto.getQuantity().get() * cancellationDish.getCount();
+            consignmentRepository.createCancellation(new Consignment(dto.getArticle(), count));
+        }
     }
 
     public Long getLastId() {

@@ -1,10 +1,7 @@
 package com.avagyan.inventoryapp.service;
 
 import com.avagyan.inventoryapp.dao.DishRepository;
-import com.avagyan.inventoryapp.dto.Dish;
-import com.avagyan.inventoryapp.dto.DishDTO;
-import com.avagyan.inventoryapp.dto.ProductDTO;
-import com.avagyan.inventoryapp.dto.ProductsDishDTO;
+import com.avagyan.inventoryapp.dto.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,5 +36,9 @@ public class DishService {
 
     public void saveQuantityProducts(List<ProductDTO> productDTO) {
         repository.saveQuantityProducts(productDTO);
+    }
+
+    public void consignmentDish(CancellationDish cancellationDish) {
+        repository.consignmentDish(cancellationDish);
     }
 }

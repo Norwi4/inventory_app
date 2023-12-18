@@ -51,19 +51,18 @@ public class ConsignmentRepository {
      */
     public List<ConsignmentDTO> getCancellationList() {
         return jdbcTemplate.query(
-                "select consignment.id as id,\n" +
+                "select consignment.id      as id,\n" +
                         "       consignment.article as article,\n" +
-                        "       p.name as productName,\n" +
+                        "       p.name              as productName,\n" +
                         "       quantity,\n" +
-                        "       prv.id as providerId,\n" +
-                        "       prv.organizationName as organizationName,\n" +
-                        "       prv.responsible as responsible,\n" +
-                        "       comeInDate,\n" +
-                        "       expirationDate\n" +
+                        "\n" +
+                        "       comeInDate\n" +
+                        "\n" +
                         "from consignment\n" +
                         "         join inventory_db.product p on consignment.article = p.article\n" +
-                        "         join provider prv on consignment.providerId = prv.id\n" +
-                        "where consignment.code = 'OUT' order by id desc",
+                        "\n" +
+                        "where consignment.code = 'OUT'\n" +
+                        "order by id desc",
                 BeanPropertyRowMapper.newInstance(ConsignmentDTO.class)
         );
     }

@@ -88,4 +88,10 @@ public class DishController {
 
         return "dish/cancellation_dish";
     }
+
+    @RequestMapping(value = "/save-cancellation", method = RequestMethod.POST)
+    public String cancellationDish(@ModelAttribute("consignment") CancellationDish consignment) {
+        dishService.consignmentDish(consignment);
+        return "redirect:/consignment/out";
+    }
 }
