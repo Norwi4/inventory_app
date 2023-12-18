@@ -33,7 +33,7 @@ public class DishService {
         return repository.getDishList();
     }
 
-    public List<ProductsDishDTO> getDishProducts() {
+    public List<ProductDTO> getDishProducts() {
         return repository.getDishProducts(repository.getLastId());
     }
 

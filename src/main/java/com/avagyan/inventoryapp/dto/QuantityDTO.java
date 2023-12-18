@@ -8,6 +8,10 @@ import java.util.List;
 public class QuantityDTO {
     List<ProductDTO> products;
 
+    public void addProduct(ProductDTO productDTO) {
+        this.products.add(productDTO);
+    }
+
     public List<ProductDTO> getProducts() {
         return products;
     }

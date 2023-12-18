@@ -2,6 +2,7 @@ package com.avagyan.inventoryapp.dao;
 
 import com.avagyan.inventoryapp.dto.Consignment;
 import com.avagyan.inventoryapp.dto.ConsignmentDTO;
+import com.avagyan.inventoryapp.dto.Dish;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

@@ -46,22 +46,46 @@ public class DishController {
     @RequestMapping(value = "/add-dish", method = RequestMethod.POST)
     public String save(@ModelAttribute("consignment") Dish dish) {
         dishService.createDish(dish);
-        return "redirect:/dish/add_product_dish";
+        return "redirect:/dish/add-product-dish";
     }
 
-    @RequestMapping("/add-product_dish")
+    @RequestMapping("/add-product-dish")
     public String formProductDish(Model model) {
         ProductDTO products = new ProductDTO();
-        List<ProductsDishDTO> list = dishService.getDishProducts();
+        List<ProductDTO> list = dishService.getDishProducts();
+
+
+        QuantityDTO quantityDTO = new QuantityDTO();
+        quantityDTO.setProducts(list);
+        model.addAttribute("form", quantityDTO);
 
         model.addAttribute("products", products);
         model.addAttribute("list", list);
         return "dish/add_product_dish";
     }
 
+    /**
+     * ИСПРАВИТЬ
+     * @param products
+     * @return
+     */
     @RequestMapping(value = "/add-product", method = RequestMethod.POST)
     public String updateQuantity(@ModelAttribute("products") QuantityDTO products) {
         dishService.saveQuantityProducts(products.getProducts());
         return "redirect:/dish";
+    }
+
+    //----------------------------------- Списание блюд --------------------------------------
+
+    @RequestMapping("/cancellation-dish")
+    public String formCancellationDish(Model model) {
+        CancellationDish dish = new CancellationDish();
+
+        List<DishDTO> dishList = dishService.getDishList();
+
+        model.addAttribute("dish", dish);
+        model.addAttribute("dishList", dishList);
+
+        return "dish/cancellation_dish";
     }
 }

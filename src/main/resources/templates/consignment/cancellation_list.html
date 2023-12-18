@@ -4,17 +4,29 @@
 <head>
   <meta charset="utf-8"/>
   <title>Sales Manager Application</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-<div>
-  <a href="/warehouse">Склады</a>
-  <a href="/consignment/in">Приходные накладные</a>
-  <a href="/consignment/out">Списание</a>
-  <a href="/remains">Остатки</a>
+<div align="center">
+  <div class="container">
+    <header class="d-flex justify-content-center py-3">
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="/warehouse" class="nav-link" aria-current="page">Склады</a></li>
+        <li class="nav-item"><a href="/consignment/in" class="nav-link">Приходные накладные</a></li>
+        <li class="nav-item"><a href="/consignment/out" class="nav-link active">Списание</a></li>
+        <li class="nav-item"><a href="/dish" class="nav-link">Блюда</a></li>
+        <li class="nav-item"><a href="/remains" class="nav-link">Остатки</a></li>
+      </ul>
+    </header>
+  </div>
 </div>
 <div align="center">
-  <h1>Списание</h1>
-  <a href="/consignment/new-cancellation">Списать товар</a>
+  <div class="container">
+    <a href="/consignment/new-cancellation">Списать товар</a>
+    <a href="/consignment/new-cancellation">Списать блюдо</a>
+  </div>
+
   <br/><br/>
   <table border="1" cellpadding="10">
     <thead>
@@ -23,9 +35,7 @@
       <th>Артикул</th>
       <th>Продукт</th>
       <th>Кол-во</th>
-      <th>Поставщик</th>
-      <th>Ответственный</th>
-      <th>Дата поставки</th>
+      <th>Дата</th>
     </tr>
     </thead>
     <tbody>
@@ -34,8 +44,6 @@
       <td th:text="${consignment.article}">Item Name</td>
       <td th:text="${consignment.productName}">Item Name</td>
       <td th:text="${consignment.quantity}">Item Name</td>
-      <td th:text="${consignment.organizationName}">Item Name</td>
-      <td th:text="${consignment.responsible}">Item Name</td>
       <td th:text="${consignment.comeInDate}">Item Name</td>
     </tr>
     </tbody>

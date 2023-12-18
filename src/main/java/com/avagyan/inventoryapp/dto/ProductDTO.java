@@ -16,6 +16,7 @@ public class ProductDTO {
      * Артикул продукта
      */
     private String article;
+    private String name;
     /**
      * Кол-во продукта
      */
@@ -24,6 +25,10 @@ public class ProductDTO {
      * Идентификатор блюда
      */
     private Optional<Integer> dishId;
+
+    public ProductDTO() {
+
+    }
 
     public Long getId() {
         return id;
@@ -55,5 +60,13 @@ public class ProductDTO {
 
     public void setDishId(Optional<Integer> dishId) {
         this.dishId = dishId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

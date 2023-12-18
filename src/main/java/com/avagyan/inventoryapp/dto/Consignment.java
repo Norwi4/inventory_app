@@ -35,6 +35,14 @@ public class Consignment {
      */
     private Code code;
 
+    public Consignment() {
+
+    }
+    public Consignment(String article, Integer quantity) {
+        this.article = article;
+        this.quantity = quantity;
+    }
+
     public Long getId() {
         return id;
     }

@@ -9,7 +9,7 @@
 <div align="center">
     <h1>Наполнение ингредиентами</h1>
     <br/>
-    <form action="#" th:action="@{/dish/add-product}" th:object="${products}"
+    <form action="#" th:action="@{/dish/add-product}" th:object="${form}"
           method="post">
 
         <table border="0" cellpadding="10">
@@ -17,9 +17,9 @@
                 <td>Состав:</td>
                 <td>Кол-во:</td>
                 <td>
-                    <tr th:each="product : ${list}">
-                        <td><span th:text="${product.name}"></span></td>
-                        <td><input type="text" th:field="*{quantity}"/></td>
+                    <tr th:each="product, itemStat : *{products}">
+                        <td><span th:text="${product.name + ' ' + product.article}" th:field="${products.article}"></span></td>
+                        <td><input type="text" th:field="*{products[__${itemStat.index}__].quantity}"/></td>
                     </tr>
                 </td>
             </tr>
