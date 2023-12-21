@@ -102,7 +102,7 @@ public class DishRepository {
      */
     public void saveQuantityProducts(List<ProductDTO> productDTO) {
         for (ProductDTO product : productDTO) {
-            jdbcTemplate.update("insert into dish_product(quantity) values (?) where article=?", product.getQuantity(), product.getArticle());
+            jdbcTemplate.update("UPDATE dish_product SET quantity=? where article=?", product.getQuantity().get(), product.getArticle().toString());
         }
     }
 

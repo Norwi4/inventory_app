@@ -43,7 +43,7 @@ public class DishController {
     @RequestMapping(value = "/add-dish", method = RequestMethod.POST)
     public String save(@ModelAttribute("consignment") Dish dish) {
         dishService.createDish(dish);
-        return "redirect:/dish";
+        return "redirect:/dish/add-product-dish";
     }
 
     @RequestMapping("/add-product-dish")

@@ -18,8 +18,9 @@
                 <td>Кол-во:</td>
                 <td>
                     <tr th:each="product, itemStat : *{products}">
-                        <td><span th:text="${product.name + ' ' + product.article}" th:field="${products.article}"></span></td>
+                        <td><input th:text="${product.name + ' ' + product.article}" th:field="*{products[__${itemStat.index}__].article}" th:value="${product.article}" type="hidden"></input></td>
                         <td><input type="text" th:field="*{products[__${itemStat.index}__].quantity}"/></td>
+
                     </tr>
                 </td>
             </tr>
