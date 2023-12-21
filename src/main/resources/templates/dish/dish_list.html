@@ -23,7 +23,7 @@
     </div>
 </div>
 <div align="center">
-    <a href="/dish/new-dish">Enter New Sale</a>
+    <a href="/dish/new-dish">Добавить блюдо</a>
     <br/><br/>
     <table border="1" cellpadding="10">
         <thead>
@@ -34,6 +34,8 @@
         <tbody>
         <tr th:each="dish : ${list}">
             <td th:text="${dish.name}">ID</td>
+            <td><a th:href="'/dish/' + ${dish.id}">Просмотр</a></td>
+
         </tr>
         </tbody>
     </table>
