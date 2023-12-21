@@ -76,10 +76,11 @@ public class ConsignmentRepository {
      */
     public void createConsignment(Consignment consignment) {
         jdbcTemplate.update(
-                "INSERT INTO consignment (article, quantity, providerId, expirationDate, code) VALUES (?, ?, ?, ?, ?)",
+                "INSERT INTO consignment (article, quantity, providerId, price, expirationDate, code) VALUES (?,?, ?, ?, ?, ?)",
                 consignment.getArticle(),
                 consignment.getQuantity(),
                 consignment.getProviderId(),
+                consignment.getPrice(),
                 consignment.getDate(),
                 "IN"
         );
