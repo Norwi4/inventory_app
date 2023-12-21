@@ -29,5 +29,17 @@ public class ProductRepository {
         );
     }
 
+    /**
+     * Добавить новый продукт
+     * @param product
+     */
+    public void createProduct(Product product) {
+        jdbcTemplate.update(
+                "insert into product (name, article, warehouseId) values (?, ?, ?)",
+                product.getName(),
+                product.getArticle(),
+                product.getWarehouseId());
+    }
+
 
 }

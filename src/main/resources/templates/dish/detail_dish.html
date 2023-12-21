@@ -13,30 +13,28 @@
     <div class="container">
         <header class="d-flex justify-content-center py-3">
             <ul class="nav nav-pills">
-                <li class="nav-item"><a href="/warehouse" class="nav-link active" aria-current="page">Склады</a></li>
+                <li class="nav-item"><a href="/warehouse" class="nav-link" aria-current="page">Склады</a></li>
                 <li class="nav-item"><a href="/consignment/in" class="nav-link">Приходные накладные</a></li>
                 <li class="nav-item"><a href="/consignment/out" class="nav-link">Списание</a></li>
-                <li class="nav-item"><a href="/dish" class="nav-link">Блюда</a></li>
+                <li class="nav-item"><a href="/dish" class="nav-link active">Блюда</a></li>
                 <li class="nav-item"><a href="/remains" class="nav-link">Остатки</a></li>
             </ul>
         </header>
     </div>
 </div>
 <div align="center">
-    <a href="/warehouse/new">Создать склад</a>
-    <a href="/warehouse/new-product">Добавить продукт</a>
+    <a href="/dish/new-dish">Enter New Sale</a>
     <br/><br/>
     <table border="1" cellpadding="10">
         <thead>
         <tr>
-            <th>ID</th>
-            <th>Название склада</th>
+            <th th:text="${dish.name}"></th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="warehouse : ${list}">
-            <td th:text="${warehouse.id}">ID</td>
-            <td th:text="${warehouse.name}">Item Name</td>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.name}">ID</td>
+            <td th:text="${product.quantity.get()}">ID</td>
         </tr>
         </tbody>
     </table>

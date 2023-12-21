@@ -22,10 +22,6 @@ public class Product {
      */
     private String article;
     /**
-     * Цена
-     */
-    private BigDecimal price;
-    /**
      * Срок годности
      */
     private LocalDate expirationDate;
@@ -56,14 +52,6 @@ public class Product {
 
     public void setArticle(String article) {
         this.article = article;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
     }
 
     public LocalDate getExpirationDate() {

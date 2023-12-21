@@ -41,4 +41,12 @@ public class DishService {
     public void consignmentDish(CancellationDish cancellationDish) {
         repository.consignmentDish(cancellationDish);
     }
+
+    public DishDTO getDishById(Long id) {
+        return repository.getDishById(id);
+    }
+
+    public List<ProductDTO> products(Long id) {
+        return repository.products(id);
+    }
 }

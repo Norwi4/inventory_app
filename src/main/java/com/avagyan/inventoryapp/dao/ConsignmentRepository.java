@@ -28,19 +28,22 @@ public class ConsignmentRepository {
      */
     public List<ConsignmentDTO> getConsignmentList() {
         return jdbcTemplate.query(
-                "select consignment.id as id,\n" +
-                        "       consignment.article as article,\n" +
-                        "       p.name as productName,\n" +
+                "select consignment.id       as id,\n" +
+                        "       consignment.article  as article,\n" +
+                        "       p.name               as productName,\n" +
                         "       quantity,\n" +
-                        "       prv.id as providerId,\n" +
+                        "       price,\n" +
+                        "       quantity * consignment.price as totalPrice,\n" +
+                        "       prv.id               as providerId,\n" +
                         "       prv.organizationName as organizationName,\n" +
-                        "       prv.responsible as responsible,\n" +
+                        "       prv.responsible      as responsible,\n" +
                         "       comeInDate,\n" +
                         "       expirationDate\n" +
                         "from consignment\n" +
                         "         join inventory_db.product p on consignment.article = p.article\n" +
                         "         join provider prv on consignment.providerId = prv.id\n" +
-                        "where consignment.code = 'IN' order by id desc",
+                        "where consignment.code = 'IN'\n" +
+                        "order by id desc",
                 BeanPropertyRowMapper.newInstance(ConsignmentDTO.class)
         );
     }

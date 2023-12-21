@@ -32,6 +32,29 @@ public class DishRepository {
     }
 
     /**
+     * Получить блюдо по идентификатору
+     * @param id
+     * @return
+     */
+    public DishDTO getDishById(Long id) {
+        return jdbcTemplate.queryForObject("select id, name from dish where id=?",
+                BeanPropertyRowMapper.newInstance(DishDTO.class),
+                id);
+    }
+
+    /**
+     * Получить ингредиенты по id блюда
+     * @param id
+     * @return
+     */
+    public List<ProductDTO> products(Long id) {
+        return jdbcTemplate.query("select dish_product.article, name, quantity, dish_product.dish_id\n" +
+                "from dish_product\n" +
+                "         left join inventory_db.product p on dish_product.article = p.article\n" +
+                "where dish_id=?", BeanPropertyRowMapper.newInstance(ProductDTO.class), id);
+    }
+
+    /**
      * Создать блюдо
      */
     public void createDish(Dish dish) {

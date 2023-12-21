@@ -23,6 +23,14 @@ public class Consignment {
      */
     private Integer quantity;
     /**
+     * Цена за штуку
+     */
+    private Integer price;
+    /**
+     * Цена в сумме
+     */
+    private Integer totalPrice;
+    /**
      * Дата
      */
     private LocalDate expirationDate;
@@ -65,6 +73,30 @@ public class Consignment {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public LocalDate getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(LocalDate expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public Integer getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Integer totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public LocalDate getDate() {

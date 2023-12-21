@@ -20,4 +20,8 @@ public class ProductService {
     public List<Product> products() {
         return repository.products();
     }
+
+    public void createProduct(Product product) {
+        repository.createProduct(product);
+    }
 }

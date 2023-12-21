@@ -5,10 +5,7 @@ import com.avagyan.inventoryapp.service.DishService;
 import com.avagyan.inventoryapp.service.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -93,5 +90,18 @@ public class DishController {
     public String cancellationDish(@ModelAttribute("consignment") CancellationDish consignment) {
         dishService.consignmentDish(consignment);
         return "redirect:/consignment/out";
+    }
+
+    //----------------------------------- Просмотр блюда --------------------------------------
+
+    @RequestMapping(value = "/{id}")
+    public String getDishById(@PathVariable Long id, Model model) {
+        DishDTO dish = dishService.getDishById(id);;
+        List<ProductDTO> products = dishService.products(id);
+
+
+        model.addAttribute("dish", dish);
+        model.addAttribute("products", products);
+        return "dish/detail_dish";
     }
 }

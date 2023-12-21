@@ -33,6 +33,8 @@
             <th>Артикул</th>
             <th>Продукт</th>
             <th>Кол-во</th>
+            <th>Цена за шт</th>
+            <th>Цена за все</th>
             <th>Поставщик</th>
             <th>Ответственный</th>
             <th>Дата поставки</th>
@@ -45,6 +47,8 @@
             <td th:text="${consignment.article}">Item Name</td>
             <td th:text="${consignment.productName}">Item Name</td>
             <td th:text="${consignment.quantity}">Item Name</td>
+            <td th:text="${consignment.price}">Item Name</td>
+            <td th:text="${consignment.totalPrice}">Item Name</td>
             <td th:text="${consignment.organizationName}">Item Name</td>
             <td th:text="${consignment.responsible}">Item Name</td>
             <td th:text="${consignment.comeInDate}">Item Name</td>

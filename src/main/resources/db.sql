@@ -31,7 +31,6 @@ CREATE TABLE `product`
     `id`          bigint(19) unsigned NOT NULL AUTO_INCREMENT,
     `name`        varchar(255),
     `article`     varchar(255),
-    `price`       bigint(19),
     `warehouseId` bigint(19),
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
@@ -43,6 +42,7 @@ CREATE TABLE `consignment`
     `id`             bigint(19) unsigned NOT NULL AUTO_INCREMENT,
     `article`        varchar(255),
     `quantity`       bigint(19),
+    `price`       bigint(19),
     `comeInDate`     timestamp           NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `expirationDate` timestamp,
     `providerId`     bigint(19),

@@ -24,6 +24,14 @@ public class ConsignmentDTO {
      */
     private Integer quantity;
     /**
+     * Цена за штуку
+     */
+    private Integer price;
+    /**
+     * Цена в сумме
+     */
+    private Integer totalPrice;
+    /**
      * Годен до
      */
     private LocalDate expirationDate;
@@ -70,6 +78,22 @@ public class ConsignmentDTO {
 
     public Integer getQuantity() {
         return quantity;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public Integer getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Integer totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public void setQuantity(Integer quantity) {
